@@ -48,6 +48,10 @@ main {
     opacity: 0;
 }
 
+.btn.error {
+    border: 2px solid red;
+}
+
 .close-btn:after {
     content: "X";
     position: absolute;
@@ -60,7 +64,7 @@ main {
 }
 
 .row {
-    border-bottom: 1px solid;
+    border-bottom: 1px solid rebeccapurple;
     font-size: 5vmin;
     height: 15vmin;
     line-height: 15vmin;
@@ -92,7 +96,7 @@ main {
 }
 
 .btn {
-    border: 2px solid gray;
+    border: 2px solid rebeccapurple;
     color: gray;
     background-color: white;
     padding: 20px 25px;
@@ -100,6 +104,7 @@ main {
     font-size: 30px;
     font-weight: bold;
     cursor: pointer;
+    min-width: 300px;
 }
 .upload-btn-wrapper:hover {
     transform: scale(1.1);
@@ -137,6 +142,6 @@ main {
     to {
         top: 88%;
         left: 1%;
-        transform: translate(0, 0) 
+        transform: translate(0, 0)
     }
 }

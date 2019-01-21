@@ -4,6 +4,6 @@ No additional dependencies for installation. Just pure Javascript on Client and 
 
 yarn install --> for setup
 
-yarn test:console --> to see the best match between employee/s
+yarn test:console or npm run test:console --> to see the best match between employee/s
 
-yarn start --> will run the UI part of the task
+yarn/npm start --> will run the UI part of the task

@@ -7,9 +7,6 @@ const PORT = 3000
 
 const requestHandler = (request, response) => {
 
-    console.log(request.method);
-    
-
     if (request.method == "POST") {
         let body = '';
         response.setHeader('Access-Control-Allow-Origin', '*')
@@ -24,7 +21,7 @@ const requestHandler = (request, response) => {
 
                 const employeesSorted = Object.keys(result.employees)
                                               .sort((a, b) => result.employees[b].bestMatch.value - result.employees[a].bestMatch.value)
-                                              .map(key => result.employees[key])        
+                                              .map(key => result.employees[key])
 
                 response.write(JSON.stringify({
                     employees: employeesSorted,
@@ -32,7 +29,8 @@ const requestHandler = (request, response) => {
                 }))
                 response.end()
             } catch (error) {
-                response.end(error.name)
+                response.statusCode = 500
+                response.end(error.message)
             }
         });
     } else {
