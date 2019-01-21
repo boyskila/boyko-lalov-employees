@@ -1,0 +1,14 @@
+{
+  "name": "boyko-lalov-employees",
+  "version": "1.0.0",
+  "main": "server.js",
+  "author": "boyskila",
+  "license": "MIT",
+  "dependencies": {
+    "fs": "^0.0.1-security"
+  },
+  "scripts": {
+    "start": "start chrome http://localhost:3000/ui/index.html && node ./src/server.js",
+    "test:console": "node ./src/consoleTest.js"
+  }
+}

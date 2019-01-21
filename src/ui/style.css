@@ -1,0 +1,142 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+main {
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+}
+.rows-holder {
+    width: 100%;
+}
+.column-title {
+    width: 24%;
+    float: left;
+    text-align: center;
+    font-size: 4.5vmin;
+}
+.column-title div {
+    padding-left: 20%;
+}
+.columns-titles {
+    border-bottom: 1px solid;
+    height: 15vmin;
+    line-height: 15vmin;
+    display: flex;
+}
+
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.close-btn {
+    width: 7vmin;
+    height: 7vmin;
+    background: red;
+    border-radius: 4px;
+    position: absolute;
+    top: 1%;
+    left: 1%;
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+.upload-wrapper.hidden, .hidden {
+    opacity: 0;
+}
+
+.close-btn:after {
+    content: "X";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5vmin;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.row {
+    border-bottom: 1px solid;
+    font-size: 5vmin;
+    height: 15vmin;
+    line-height: 15vmin;
+    text-align: center;
+    background: #F8F8F8;
+    display: flex;
+    justify-content: space-around;
+    width: 99%;
+    margin: auto;
+    color: rgb(60, 60, 60)
+}
+.row-item {
+    width: 20%;
+}
+#grid {
+    background: #F8F8F8;
+    display: flex;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.row:hover {
+    background: #F0F0F0;
+}
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    transition: transform 0.5s
+}
+
+.btn {
+    border: 2px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 20px 25px;
+    border-radius: 8px;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.upload-btn-wrapper:hover {
+    transform: scale(1.1);
+}
+
+.upload-btn-wrapper input[type=file] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    height: 100%;
+}
+
+.upload-wrapper {
+    position: absolute;
+    transition: opacity 0.2s;
+}
+
+.upload-wrapper {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.upload-wrapper.animated {
+    animation: animate 1s forwards;
+}
+
+.upload-wrapper.animated .btn {
+    padding: 10px;
+    transition: padding 1s;
+}
+
+@keyframes animate {
+    to {
+        top: 88%;
+        left: 1%;
+        transform: translate(0, 0) 
+    }
+}
