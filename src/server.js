@@ -18,18 +18,22 @@ const requestHandler = (request, response) => {
         }).on('data', (chunk) => {
             body += chunk.toString()
         }).on('end', () => {
-            const employees = fileParser(Object.keys(qs.parse(body))[0]);
-            const result = findPairWorkedTogetherForTheMostTime(employees)
-    
-            const employeesSorted = Object.keys(result.employees)
-                                          .sort((a, b) => result.employees[b].bestMatch.value - result.employees[a].bestMatch.value)
-                                          .map(key => result.employees[key])        
-            
-            response.write(JSON.stringify({
-                employees: employeesSorted,
-                bestMatches: result.bestMatches
-            }))
-            response.end()
+            try {
+                const employees = fileParser(Object.keys(qs.parse(body))[0]);
+                const result = findPairWorkedTogetherForTheMostTime(employees)
+
+                const employeesSorted = Object.keys(result.employees)
+                                              .sort((a, b) => result.employees[b].bestMatch.value - result.employees[a].bestMatch.value)
+                                              .map(key => result.employees[key])        
+
+                response.write(JSON.stringify({
+                    employees: employeesSorted,
+                    bestMatches: result.bestMatches
+                }))
+                response.end()
+            } catch (error) {
+                response.end(error.name)
+            }
         });
     } else {
         response.end(fs.readFileSync(__dirname + request.url));
