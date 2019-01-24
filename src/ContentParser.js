@@ -1,22 +1,16 @@
 const Employee = require('./Employee')
 const DateRange = require('./DateRange')
 const Project = require('./Project')
-const PATTERN = "EmployeeID ProjectID DateFrom DateTo"
 
 module.exports = (content) => {
     const employees = {}
     const lines = (content).split('\n');
+    
+    lines.forEach((line) => {
+        line = line.replace(/\s+/g, '')
 
-    if (lines[0].replace(/\s+/g, ' ').trim() !== PATTERN) {
-        throw new Error("File doesnt meet process requirments.")
-    }
-
-    lines.forEach((line, i) => {
-
-        if (line.length > 1 && i > 0) {
-
+        if (line.length) {
             // remove all white spaces
-            line = line.replace(/\s+/g, '')
             const rowSplited = line.split(",")
 
             const [ employeeId, projectId, dateFrom, dateTo ] = rowSplited;
@@ -34,6 +28,7 @@ module.exports = (content) => {
             } else {
                 employees[employeeId] = new Employee(employeeId, new Project(projectId, dateRange))
             }
+
         }
     });
 
