@@ -6,8 +6,7 @@ function Employee(id, project) {
     this.sharedDays = {}
     this.bestMatch = {
         ids: [],
-        value: 0,
-        projects: []
+        value: 0
     }
 }
 
@@ -30,7 +29,7 @@ Employee.prototype.saveBestResult = function(checkedEmployeeID) {
 Employee.prototype.setSharedDays = function(colleagueID, overlappedDaysPerProject, projectIDs) {
     if (this.sharedDays[colleagueID]) {
         this.sharedDays[colleagueID].value += overlappedDaysPerProject
-        this.sharedDays[colleagueID].projects.push(...projectIDs)
+        this.sharedDays[colleagueID].projects.push(projectIDs)
     } else {
         this.sharedDays[colleagueID] = {
             value: overlappedDaysPerProject,
