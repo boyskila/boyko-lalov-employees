@@ -19,6 +19,7 @@ document
         xhr.addEventListener("load", () => {
             if (xhr.readyState === xhr.DONE) {
                 if (xhr.status === ERROR) {
+                    console.error(xhr.response);
                     uploadButton.classList.add('error')
                     uploadButton.textContent = "Ops... Try again"
                     setTimeout(() => {
@@ -29,7 +30,7 @@ document
                 }
                 if (xhr.status === OK) {
                     new EmployeesGrid(
-                        JSON.parse(xhr.response).employees
+                        {...JSON.parse(xhr.response).employees}
                     )
                 }
             }
