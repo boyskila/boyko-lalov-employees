@@ -19,14 +19,7 @@ const requestHandler = (request, response) => {
                 const employees = fileParser(Object.keys(qs.parse(body))[0]);
                 const result = findPairWorkedTogetherForTheMostTime(employees)
 
-                const employeesSorted = Object.keys(result.employees)
-                                              .sort((a, b) => result.employees[b].bestMatch.value - result.employees[a].bestMatch.value)
-                                              .map(key => result.employees[key])
-
-                response.write(JSON.stringify({
-                    employees: employeesSorted,
-                    bestMatches: result.bestMatches
-                }))
+                response.write(JSON.stringify(result))
                 response.end()
             } catch (error) {
                 response.statusCode = 500
