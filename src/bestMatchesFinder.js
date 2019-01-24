@@ -1,10 +1,12 @@
 
-const bestMatchesFinder = (employees) => {
+const bestMatchesFinder = (parsedData) => {
     const bestMatches = {
         value: 0,
         id: "",
         ids: {}
     };
+
+    const employees = {...parsedData}
 
     for (const processedEmployeeID in employees) {
         const processedEmployee = employees[processedEmployeeID]
@@ -37,7 +39,7 @@ const bestMatchesFinder = (employees) => {
                             const overlappedDaysPerProject = processedEmployeeProject.getOverlappedDaysCount(checkedEmployeeProject) // get overlapped days count
                             
                             if (overlappedDaysPerProject) {
-                                processedEmployee.setSharedDays(checkedEmployeeID, overlappedDaysPerProject, [projectID])
+                                processedEmployee.setSharedDays(checkedEmployeeID, overlappedDaysPerProject, projectID)
                             }
                         }
                     }
